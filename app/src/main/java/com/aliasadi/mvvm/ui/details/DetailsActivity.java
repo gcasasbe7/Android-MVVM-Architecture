@@ -11,6 +11,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
 
 import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.mapper.MovieMapper;
 import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.bumptech.glide.Glide;
@@ -50,7 +51,7 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
     @NonNull
     @Override
     protected DetailsViewModel createViewModel() {
-        MovieRemote movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        MovieRemote movie = MovieMapper.toModel((Movie)getIntent().getParcelableExtra(EXTRA_MOVIE));
         DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
         return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
     }

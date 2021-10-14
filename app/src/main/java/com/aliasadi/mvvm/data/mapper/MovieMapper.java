@@ -13,4 +13,13 @@ public class MovieMapper {
                 movieRemote.getImage(), movieRemote.getTitle());
     }
 
+    public static MovieRemote toModel(Movie pMovie){
+        MovieRemote lMovieRemote = new MovieRemote();
+        lMovieRemote.setId(pMovie.getId());
+        lMovieRemote.setTitle(pMovie.getTitle());
+        lMovieRemote.setDescription(pMovie.getDescription());
+        lMovieRemote.setImage(pMovie.getImage());
+
+        return lMovieRemote;
+    }
 }
